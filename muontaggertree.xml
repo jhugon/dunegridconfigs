@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+
+<!-- Production Project -->
+
+<!DOCTYPE project [
+<!ENTITY release "v06_05_00">
+<!ENTITY file_type "mc">
+<!ENTITY run_type "physics">
+<!ENTITY name "muontaggertree_v1">
+<!ENTITY tag "mcc6.0">
+]>
+
+<project name="&name;">
+
+  <!-- Group -->
+  <group>dune</group>
+
+  <!-- Project size -->
+  <numevents>5400</numevents>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>
+
+  <!-- Larsoft information -->
+  <larsoft>
+    <tag>&release;</tag>
+    <qual>e9:prof</qual>
+    <local>/dune/app/users/jhugon/dunetpcMuTag/dunetpc_66463e338ba228.tar</local>
+  </larsoft>
+
+  <!-- dune35t metadata parameters -->
+
+  <parameter name ="MCName">&name;</parameter>
+  <parameter name ="MCDetectorType">protodune</parameter>
+
+  <!-- Project stages -->
+
+  <stage name="muontaggertree">
+    <fcl>muontaggertreemaker.fcl</fcl>
+    <inputlist>/dune/app/users/jhugon/dunetpcMuTag/cosmicsv1_reco_v06_02_00.txt</inputlist>
+    <outdir>/pnfs/dune/persistent/users/jhugon/&release;/g4/&name;</outdir>
+    <workdir>/dune/app/users/jhugon/work/&release;/g4/&name;</workdir>
+    <numjobs>54</numjobs>
+    <datatier>reco</datatier>
+    <defname>&name;_&tag;_reco</defname>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>

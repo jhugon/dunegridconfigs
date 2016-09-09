@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!-- Production Project -->
+
+<!DOCTYPE project [
+<!ENTITY release "v05_12_01">
+<!ENTITY file_type "mc">
+<!ENTITY run_type "physics">
+<!ENTITY name "AntiMuonCutEvents_LSU_protodune_v5">
+<!ENTITY tag "mcc6.0">
+]>
+
+<project name="&name;">
+
+  <!-- Group -->
+  <group>dune</group>
+
+  <!-- Project size -->
+  <numevents>1000000</numevents>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>
+
+  <!-- Larsoft information -->
+  <larsoft>
+    <tag>&release;</tag>
+    <qual>e9:prof</qual>
+    <local>/dune/app/users/jhugon/dunetpcMuTag/dunetpc_v05_11_02_protodunecosmics.tar</local>
+  </larsoft>
+
+  <!-- dune35t metadata parameters -->
+
+  <parameter name ="MCName">AntiMuonCutEvents_LSU_protodune_v5</parameter>
+  <parameter name ="MCDetectorType">protodune</parameter>
+  <parameter name ="MCGenerators">TextFileGen</parameter>
+
+  <!-- Project stages -->
+
+  <stage name="gen">
+    <fcl>AntiMuonCutEvents_LSU_protodune.fcl</fcl>
+    <inputmode>textfile</inputmode>
+    <!-- 2000 events/job. Makes sure that adds up to total numevents -->
+    <inputlist>/dune/app/users/jhugon/dunetpcMuTag/AntiMuonCutEvents_txtfileList_500jobs.txt</inputlist>
+    <outdir>/pnfs/dune/persistent/users/jhugon/&release;/gen/&name;</outdir>
+    <workdir>/dune/app/users/jhugon/work/&release;/gen/&name;</workdir>
+    <output>AntiMuonCutEvents_LSU_protodune_${PROCESS}_%tc_gen.root</output>
+    <numjobs>500</numjobs>
+    <datatier>generated</datatier>
+    <defname>&name;_&tag;_gen</defname>
+  </stage>
+
+  <stage name="g4">
+    <fcl>protoDUNE_g4single.fcl</fcl>
+    <outdir>/pnfs/dune/persistent/users/jhugon/&release;/g4/&name;</outdir>
+    <workdir>/dune/app/users/jhugon/work/&release;/g4/&name;</workdir>
+    <numjobs>500</numjobs>
+    <datatier>simulated</datatier>
+    <defname>&name;_&tag;_g4</defname>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
