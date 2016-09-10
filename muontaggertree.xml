@@ -2,11 +2,13 @@
 
 <!-- Production Project -->
 
+<!-- v2 changed to new tarball that writes trajectory info -->
+
 <!DOCTYPE project [
 <!ENTITY release "v06_05_00">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
-<!ENTITY name "muontaggertree_v1">
+<!ENTITY name "muontaggertree_v2">
 <!ENTITY tag "mcc6.0">
 ]>
 
@@ -28,7 +30,7 @@
   <larsoft>
     <tag>&release;</tag>
     <qual>e9:prof</qual>
-    <local>/dune/app/users/jhugon/dunetpcMuTag/dunetpc_66463e338ba228.tar</local>
+    <local>/dune/app/users/jhugon/dunetpcMuTag/dunetpc_c1d4372db2b82e0.tar</local>
   </larsoft>
 
   <!-- dune35t metadata parameters -->
@@ -41,8 +43,8 @@
   <stage name="muontaggertree">
     <fcl>muontaggertreemaker.fcl</fcl>
     <inputlist>/dune/app/users/jhugon/dunetpcMuTag/cosmicsv1_reco_v06_02_00.txt</inputlist>
-    <outdir>/pnfs/dune/persistent/users/jhugon/&release;/g4/&name;</outdir>
-    <workdir>/dune/app/users/jhugon/work/&release;/g4/&name;</workdir>
+    <outdir>/pnfs/dune/persistent/users/jhugon/&release;/muontaggertree/&name;</outdir>
+    <workdir>/dune/app/users/jhugon/work/&release;/muontaggertree/&name;</workdir>
     <numjobs>54</numjobs>
     <datatier>reco</datatier>
     <defname>&name;_&tag;_reco</defname>
