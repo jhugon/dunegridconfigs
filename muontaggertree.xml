@@ -3,12 +3,18 @@
 <!-- Production Project -->
 
 <!-- v2 changed to new tarball that writes trajectory info -->
+<!-- v3 changed to new tarball that doesn't write traj info
+        but does all muons per event. Write to scratch 
+        instead of persistent -->
+<!-- v4 new tarball: add pdg code, muon tagger hit points,
+        and distance from traj points to line between tagger 
+        hits. Also, turned hits back on -->
 
 <!DOCTYPE project [
 <!ENTITY release "v06_05_00">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
-<!ENTITY name "muontaggertree_v2">
+<!ENTITY name "muontaggertree_v4">
 <!ENTITY tag "mcc6.0">
 ]>
 
@@ -30,7 +36,7 @@
   <larsoft>
     <tag>&release;</tag>
     <qual>e9:prof</qual>
-    <local>/dune/app/users/jhugon/dunetpcMuTag/dunetpc_c1d4372db2b82e0.tar</local>
+    <local>/dune/app/users/jhugon/dunetpcMuTag/dunetpc_ff3d930926ef.tar</local>
   </larsoft>
 
   <!-- dune35t metadata parameters -->
@@ -43,7 +49,7 @@
   <stage name="muontaggertree">
     <fcl>muontaggertreemaker.fcl</fcl>
     <inputlist>/dune/app/users/jhugon/dunetpcMuTag/cosmicsv1_reco_v06_02_00.txt</inputlist>
-    <outdir>/pnfs/dune/persistent/users/jhugon/&release;/muontaggertree/&name;</outdir>
+    <outdir>/pnfs/dune/scratch/users/jhugon/&release;/muontaggertree/&name;</outdir>
     <workdir>/dune/app/users/jhugon/work/&release;/muontaggertree/&name;</workdir>
     <numjobs>54</numjobs>
     <datatier>reco</datatier>
