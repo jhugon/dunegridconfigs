@@ -1,24 +1,23 @@
 <?xml version="1.0"?>
 
 <!-- Production Project -->
-<!-- for v1 first try with v06_06_01, just 5000, 10 jobs -->
-<!-- for v2 200k events, 200 jobs -->
+<!-- for v1 test-run for protoDUNE, 10k, 10 jobs -->
 
 <!DOCTYPE project [
 <!ENTITY release "v06_06_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
-<!ENTITY name "lariat_PiAbsAndChEx_flat_isoInTPC_p_v2">
+<!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_p_v1">
 <!ENTITY tag "TestOfBatchJobs">
-<!ENTITY myoutdir "/pnfs/lariat/scratch/users/jhugon">
-<!ENTITY myworkdir "/lariat/app/users/jhugon/lariatOffline">
-<!ENTITY njobs "200">
+<!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
+<!ENTITY myworkdir "/dune/app/users/jhugon/work">
+<!ENTITY njobs "10">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
-  <numevents>200000</numevents>
+  <numevents>10000</numevents>
   <!-- Try to do 1000 events/job  ~5hr for reco -->
 
   <!-- Operating System -->
@@ -31,21 +30,37 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/lariat/app/users/jhugon/genPionAbsAndChEx/lariatsoft_35fdffd5fd2e5.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_e61de9a.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
-  <stage name="gensimdigi">
-      <fcl>prodsingle_lariat_PiAbsAndChEx_isoInTPC_p.fcl</fcl>
-      <outdir>&myoutdir;/&release;/gensimdigi/&name;</outdir>
-      <workdir>&myworkdir;/&release;/gensimdigi/&name;</workdir>
+  <stage name="gen">
+      <fcl>gen_protoDune_likelihoodPID_isoInTPC_proton.fcl</fcl>
+      <outdir>&myoutdir;/&release;/gen/&name;</outdir>
+      <workdir>&myworkdir;/&release;/gen/&name;</workdir>
       <numjobs>&njobs;</numjobs>
-      <datatier>simulated</datatier>
+      <datatier>generated</datatier>
+  </stage>
+
+  <stage name="g4">
+    <fcl>protoDUNE_g4single.fcl</fcl>
+      <outdir>&myoutdir;/&release;/g4/&name;</outdir>
+      <workdir>&myworkdir;/&release;/g4/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+    <datatier>simulated</datatier>
+  </stage>
+
+  <stage name="detsim">
+    <fcl>protoDUNE_detsim_single.fcl</fcl>
+      <outdir>&myoutdir;/&release;/detsim/&name;</outdir>
+      <workdir>&myworkdir;/&release;/detsim/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+    <datatier>detector-simulated</datatier>
   </stage>
 
   <stage name="reco">
-      <fcl>RecoMC.fcl</fcl>
+      <fcl>protoDUNE_reco_likelihoodPID.fcl</fcl>
       <outdir>&myoutdir;/&release;/reco/&name;</outdir>
       <workdir>&myworkdir;/&release;/reco/&name;</workdir>
       <numjobs>&njobs;</numjobs>
@@ -62,7 +77,7 @@
   </stage>
 
   <stage name="ana">
-      <fcl>AnaTree.fcl</fcl>
+      <fcl>protoDUNE_ana_hist.fcl</fcl>
       <inputlist>&myoutdir;/&release;/reco/&name;/files.list</inputlist>
       <outdir>&myoutdir;/&release;/ana/&name;</outdir>
       <workdir>&myworkdir;/&release;/ana/&name;</workdir>
