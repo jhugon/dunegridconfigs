@@ -30,7 +30,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_e61de9a.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_229f211_larana_6356051.tar</local>
   </larsoft>
 
   <!-- Project stages -->
@@ -68,7 +68,7 @@
   </stage>
 
   <stage name="likelihood">
-      <fcl>dEdxAllTracksNoFile.fcl</fcl>
+      <fcl>protoDUNE_likelihoodmaker.fcl</fcl>
       <inputlist>&myoutdir;/&release;/reco/&name;/files.list</inputlist>
       <outdir>&myoutdir;/&release;/likelihood/&name;</outdir>
       <workdir>&myworkdir;/&release;/likelihood/&name;</workdir>
