@@ -4,7 +4,7 @@
 <!-- for v1 test-run for protoDUNE, 10k, 10 jobs -->
 
 <!DOCTYPE project [
-<!ENTITY release "v06_06_01">
+<!ENTITY release "v06_18_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
 <!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_mup_v1">
@@ -30,7 +30,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_229f211_larana_6356051.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_40e2dd5_larana_59e8fc6.tar</local>
   </larsoft>
 
   <!-- Project stages -->
@@ -44,7 +44,7 @@
   </stage>
 
   <stage name="g4">
-    <fcl>protoDUNE_g4single.fcl</fcl>
+    <fcl>protoDUNE_g4.fcl</fcl>
       <outdir>&myoutdir;/&release;/g4/&name;</outdir>
       <workdir>&myworkdir;/&release;/g4/&name;</workdir>
       <numjobs>&njobs;</numjobs>
@@ -52,7 +52,7 @@
   </stage>
 
   <stage name="detsim">
-    <fcl>protoDUNE_detsim_single.fcl</fcl>
+    <fcl>protoDUNE_detsim.fcl</fcl>
       <outdir>&myoutdir;/&release;/detsim/&name;</outdir>
       <workdir>&myworkdir;/&release;/detsim/&name;</workdir>
       <numjobs>&njobs;</numjobs>
@@ -60,7 +60,7 @@
   </stage>
 
   <stage name="reco">
-      <fcl>protoDUNE_reco_likelihoodPID.fcl</fcl>
+      <fcl>protoDUNE_reco.fcl</fcl>
       <outdir>&myoutdir;/&release;/reco/&name;</outdir>
       <workdir>&myworkdir;/&release;/reco/&name;</workdir>
       <numjobs>&njobs;</numjobs>
