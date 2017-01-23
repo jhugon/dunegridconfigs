@@ -2,23 +2,24 @@
 
 <!-- Production Project -->
 <!-- for v1 test-run for protoDUNE, 10k, 10 jobs -->
+<!-- for v2 large-scale -->
 
 <!DOCTYPE project [
 <!ENTITY release "v06_18_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
-<!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_p_v1">
+<!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_p_v2">
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/dune/app/users/jhugon/work">
-<!ENTITY njobs "10">
+<!ENTITY njobs "600">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
-  <numevents>10000</numevents>
-  <!-- Try to do 1000 events/job  ~5hr for reco -->
+  <numevents>300000</numevents>
+  <!-- Try to do 500 events/job  ~5hr for reco -->
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -30,7 +31,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_40e2dd5_larana_59e8fc6.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_e4f53d1_larana_59e8fc6.tar</local>
   </larsoft>
 
   <!-- Project stages -->
