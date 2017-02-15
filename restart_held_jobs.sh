@@ -1,0 +1,13 @@
+#!/bin/bash
+
+jobsub_q --hold -G dune --user=jhugon > heldjobs.txt
+while read in; do
+  if [[ $in == *"@"* ]]; then
+    echo $in; 
+    jobid=$(sed 's/ .\+//' <<< $in)
+    #echo $jobid
+    command="jobsub_release --jobid=$jobid"; 
+    echo $command
+    $command; 
+  fi
+done < heldjobs.txt 
