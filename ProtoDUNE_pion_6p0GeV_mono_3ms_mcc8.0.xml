@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project [
+<!ENTITY release "v06_18_01">
+<!ENTITY file_type "mc">
+<!ENTITY run_type "physics">
+<!ENTITY name "ProtoDUNE_pion_6p0GeV_mono_3ms_mcc8.0_v2">
+<!ENTITY tag "TestOfBatchJobs">
+<!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
+<!ENTITY myworkdir "/dune/app/users/jhugon/work">
+<!ENTITY njobs "10">
+]>
+
+<project name="&name;">
+
+  <!-- Project size -->
+  <numevents>-1</numevents>
+  <maxfilesperjob>1</maxfilesperjob>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC,OFFSITE</resource>
+  <memory>1300</memory>
+
+  <!-- Larsoft information -->
+  <larsoft>
+      <tag>&release;</tag>
+      <qual>e10:prof</qual>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_e4f53d18_larana_308b53b.tar</local>
+  </larsoft>
+
+  <!-- Project stages -->
+
+  <stage name="likelihood">
+      <fcl>protoDUNE_likelihoodmaker.fcl</fcl>
+      <inputdef>ProtoDUNE_pion_6p0GeV_mono_3ms_mcc8.0</inputdef>
+      <outdir>&myoutdir;/&release;/likelihood/&name;</outdir>
+      <workdir>&myworkdir;/&release;/likelihood/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+      <datatier>reconstructed-2d</datatier>
+      <jobsub>--expected-lifetime=3h</jobsub>
+  </stage>
+
+  <stage name="ana">
+      <fcl>protoDUNE_ana_hist.fcl</fcl>
+      <inputdef>ProtoDUNE_pion_6p0GeV_mono_3ms_mcc8.0</inputdef>
+      <!-- <inputlist>&myoutdir;/&release;/likelihood/&name;/files.list</inputlist> -->
+      <outdir>&myoutdir;/&release;/ana/&name;</outdir>
+      <workdir>&myworkdir;/&release;/ana/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+      <datatier>reconstructed-2d</datatier>
+      <jobsub>--expected-lifetime=3h</jobsub>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
