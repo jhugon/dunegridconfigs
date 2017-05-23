@@ -4,11 +4,11 @@
 <!ENTITY release "v06_18_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
-<!ENTITY name "ProtoDUNE_pion_6p0GeV_mono_3ms_mcc8.0_v2">
+<!ENTITY name "ProtoDUNE_pion_6p0GeV_mono_3ms_mcc8.0_v3">
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/dune/app/users/jhugon/work">
-<!ENTITY njobs "10">
+<!ENTITY njobs "18">
 ]>
 
 <project name="&name;">
@@ -40,7 +40,7 @@
       <workdir>&myworkdir;/&release;/likelihood/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
-      <jobsub>--expected-lifetime=3h</jobsub>
+      <jobsub>--expected-lifetime=8h</jobsub>
   </stage>
 
   <stage name="ana">
@@ -51,7 +51,7 @@
       <workdir>&myworkdir;/&release;/ana/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
-      <jobsub>--expected-lifetime=3h</jobsub>
+      <jobsub>--expected-lifetime=8h</jobsub>
   </stage>
 
   <!-- file type -->
