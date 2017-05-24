@@ -8,18 +8,18 @@
 <!ENTITY release "v06_33_00_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
-<!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_pip_v1">
+<!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_pip_v2">
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/dune/app/users/jhugon/work">
-<!ENTITY njobs "10">
+<!ENTITY njobs "200">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
-  <numevents>50</numevents>
-  <!-- Try to do 500 events/job  ~5hr for reco -->
+  <numevents>20000</numevents>
+  <!-- Try to do 100 events/job  ~2hr for reco -->
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -28,7 +28,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_6213ea36_larana_f755611.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_73295c2a_larana_02eb16e.tar</local>
   </larsoft>
 
   <!-- Project stages -->

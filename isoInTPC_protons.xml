@@ -5,85 +5,70 @@
 <!-- for v2 large-scale -->
 
 <!DOCTYPE project [
-<!ENTITY release "v06_18_01">
+<!ENTITY release "v06_33_00_01">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
 <!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_p_v2">
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/dune/app/users/jhugon/work">
-<!ENTITY njobs "600">
+<!ENTITY njobs "200">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
-  <numevents>300000</numevents>
-  <!-- Try to do 500 events/job  ~5hr for reco -->
+  <numevents>20000</numevents>
+  <!-- Try to do 100 events/job  ~2hr for reco -->
 
   <!-- Operating System -->
   <os>SL6</os>
-
-  <!-- Batch resources -->
-  <resource>DEDICATED,OPPORTUNISTIC</resource>
 
   <!-- Larsoft information -->
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_e4f53d1_larana_308b53b.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_73295c2a_larana_02eb16e.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
-  <stage name="gen">
+  <stage name="gensimdigireco">
       <fcl>gen_protoDune_likelihoodPID_isoInTPC_proton.fcl</fcl>
-      <outdir>&myoutdir;/&release;/gen/&name;</outdir>
-      <workdir>&myworkdir;/&release;/gen/&name;</workdir>
-      <numjobs>&njobs;</numjobs>
-      <datatier>generated</datatier>
-  </stage>
-
-  <stage name="g4">
-    <fcl>protoDUNE_g4.fcl</fcl>
-      <outdir>&myoutdir;/&release;/g4/&name;</outdir>
-      <workdir>&myworkdir;/&release;/g4/&name;</workdir>
-      <numjobs>&njobs;</numjobs>
-    <datatier>simulated</datatier>
-  </stage>
-
-  <stage name="detsim">
-    <fcl>protoDUNE_detsim.fcl</fcl>
-      <outdir>&myoutdir;/&release;/detsim/&name;</outdir>
-      <workdir>&myworkdir;/&release;/detsim/&name;</workdir>
-      <numjobs>&njobs;</numjobs>
-    <datatier>detector-simulated</datatier>
-  </stage>
-
-  <stage name="reco">
+      <fcl>protoDUNE_g4.fcl</fcl>
+      <fcl>protoDUNE_detsim.fcl</fcl>
       <fcl>protoDUNE_reco.fcl</fcl>
-      <outdir>&myoutdir;/&release;/reco/&name;</outdir>
-      <workdir>&myworkdir;/&release;/reco/&name;</workdir>
+      <outdir>&myoutdir;/&release;/gensimdigireco/&name;</outdir>
+      <workdir>&myworkdir;/&release;/gensimdigireco/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
+      <jobsub>--expected-lifetime=3h</jobsub>
+      <resource>DEDICATED,OPPORTUNISTIC,OFFSITE</resource>
+      <memory>1500</memory>
   </stage>
 
   <stage name="likelihood">
       <fcl>protoDUNE_likelihoodmaker.fcl</fcl>
-      <inputlist>&myoutdir;/&release;/reco/&name;/files.list</inputlist>
+      <inputlist>&myoutdir;/&release;/gensimdigireco/&name;/files.list</inputlist>
       <outdir>&myoutdir;/&release;/likelihood/&name;</outdir>
       <workdir>&myworkdir;/&release;/likelihood/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
+      <jobsub>--expected-lifetime=1h</jobsub>
+      <resource>DEDICATED,OPPORTUNISTIC</resource>
+      <memory>1500</memory>
   </stage>
 
   <stage name="ana">
       <fcl>protoDUNE_ana_hist.fcl</fcl>
-      <inputlist>&myoutdir;/&release;/reco/&name;/files.list</inputlist>
+      <inputlist>&myoutdir;/&release;/gensimdigireco/&name;/files.list</inputlist>
       <outdir>&myoutdir;/&release;/ana/&name;</outdir>
       <workdir>&myworkdir;/&release;/ana/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
+      <jobsub>--expected-lifetime=1h</jobsub>
+      <resource>DEDICATED,OPPORTUNISTIC</resource>
+      <memory>1500</memory>
   </stage>
 
   <!-- file type -->
