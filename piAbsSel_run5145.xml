@@ -11,14 +11,14 @@
 <!ENTITY name "protoDUNE_data_run5145">
 <!ENTITY release "v07_09_00">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "119">
+<!ENTITY njobs "65">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>5</maxfilesperjob>
+  <maxfilesperjob>10</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -43,7 +43,7 @@
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
       <memory>1500</memory>
-      <jobsub>--expected-lifetime=8h</jobsub>
+      <jobsub>--expected-lifetime=3h</jobsub>
   </stage>
 
   <!-- file type -->
