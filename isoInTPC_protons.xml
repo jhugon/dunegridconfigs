@@ -11,7 +11,7 @@
 <!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_p_v2">
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
-<!ENTITY myworkdir "/dune/app/users/jhugon/work">
+<!ENTITY myworkdir /pnfs/dune/scratch/users/jhugon/gridworkdir>
 <!ENTITY njobs "200">
 ]>
 
