@@ -30,20 +30,20 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_ac9be19e.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_0d39831b.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_03_physics_run5145</inputdef> <!-- 594 files -->
+      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_run5145</inputdef> <!-- 594 files -->
       <fcl>piAbsSelector.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
       <memory>1500</memory>
-      <jobsub>--expected-lifetime=3h</jobsub>
+      <jobsub>--expected-lifetime=8h</jobsub>
   </stage>
 
   <!-- file type -->
