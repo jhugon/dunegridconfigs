@@ -11,14 +11,14 @@
 <!ENTITY name "protoDUNE_data_run5834">
 <!ENTITY release "v07_09_00">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "55">
+<!ENTITY njobs "123">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>5</maxfilesperjob>
+  <maxfilesperjob>2</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
