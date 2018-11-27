@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<!-- First try running piAbsSelector on protoDUNE data on grid -->
+
+<!DOCTYPE project [
+<!ENTITY file_type "data">
+<!ENTITY run_type "physics">
+<!ENTITY tag "TestOfBatchJobs">
+<!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
+<!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
+<!ENTITY name "protoDUNE_data_run5432_v2">
+<!ENTITY release "v07_11_00">
+<!ENTITY qual "e17:prof">
+<!ENTITY njobs "245">
+]>
+
+<project name="&name;">
+
+  <!-- Project size -->
+  <numevents>-1</numevents>
+  <maxfilesperjob>5</maxfilesperjob>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>
+
+  <!-- Larsoft information -->
+  <larsoft>
+      <tag>&release;</tag>
+      <qual>&qual;</qual>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_a75b23ad.tar</local>
+  </larsoft>
+
+  <!-- Project stages -->
+
+  <stage name="piAbsSelector">
+      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_run5432</inputdef> <!-- 1162 files -->
+      <fcl>piAbsSelector.fcl</fcl>
+      <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
+      <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+      <datatier>reconstructed-2d</datatier>
+      <memory>1500</memory>
+      <jobsub>--expected-lifetime=3h</jobsub>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
+
