@@ -3,6 +3,7 @@
 xmlfn=$1
 line=$(grep "<inputdef>.*</inputdef>" $xmlfn)
 ndefs=$(echo $line | wc -w)
+echo "ndefs: $ndefs"
 if [ "$ndefs" -eq "0" ]; then
   echo "Error: No single-line inputdef found in: $xmlfn"
   exit 1;
