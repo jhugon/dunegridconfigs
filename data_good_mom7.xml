@@ -8,17 +8,17 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_mcc11_flf_1GeV">
-<!ENTITY release "v07_09_00">
+<!ENTITY name "protoDUNE_data_good_mom7">
+<!ENTITY release "v07_11_00">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "190">
+<!ENTITY njobs "940">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>1</maxfilesperjob>
+  <maxfilesperjob>5</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -30,19 +30,30 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_0d39831b.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_a8c089e.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>mcc11_pd_sp_reco_flf_1.0GeV</inputdef> <!-- 188 files -->
+      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_hv180_mom7</inputdef> <!-- 4512 files -->
       <fcl>piAbsSelector.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
-      <memory>2500</memory>
+      <memory>1500</memory>
+      <jobsub>--expected-lifetime=8h</jobsub>
+  </stage>
+
+  <stage name="beamAna">
+      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_hv180_mom7</inputdef> <!-- 4512 files -->
+      <fcl>lsuBeamAnalyzer_redo_beamevent.fcl</fcl>
+      <outdir>&myoutdir;/&release;/beamAna/&name;</outdir>
+      <workdir>&myworkdir;/&release;/beamAna/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+      <datatier>reconstructed-2d</datatier>
+      <memory>1500</memory>
       <jobsub>--expected-lifetime=8h</jobsub>
   </stage>
 
