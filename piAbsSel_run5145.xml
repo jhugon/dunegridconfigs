@@ -9,9 +9,9 @@
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
 <!ENTITY name "protoDUNE_data_run5145">
-<!ENTITY release "v07_09_00">
+<!ENTITY release "v07_11_00">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "140">
+<!ENTITY njobs "630">
 ]>
 
 <project name="&name;">
@@ -30,13 +30,13 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_0d39831b.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_a8c089e.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_run5145</inputdef> <!-- 594 files -->
+      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_run5145</inputdef> <!-- 3082 files -->
       <fcl>piAbsSelector.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
