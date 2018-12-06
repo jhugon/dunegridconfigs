@@ -5,7 +5,7 @@
 <!-- for v2 large-scale -->
 
 <!DOCTYPE project [
-<!ENTITY release "v06_33_00_01">
+<!ENTITY release "v07_12_00">
 <!ENTITY file_type "mc">
 <!ENTITY run_type "physics">
 <!ENTITY name "protoDUNE_likelihoodPID_flat_isoInTPC_mup_v1">
@@ -28,7 +28,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>e10:prof</qual>
-      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_a75b23ad.tar</local>
+      <local>/dune/app/users/jhugon/likelihoodPID/grid/dunetpc_806d4a86.tar</local>
   </larsoft>
 
   <!-- Project stages -->
