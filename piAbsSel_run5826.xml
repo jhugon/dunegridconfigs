@@ -8,10 +8,10 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_data_run5826_v3">
-<!ENTITY release "v07_12_00">
+<!ENTITY name "protoDUNE_data_run5826_v6_b49a88cb">
+<!ENTITY release "v08_11_00">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "260">
+<!ENTITY njobs "550">
 ]>
 
 <project name="&name;">
@@ -30,14 +30,14 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_806d4a86.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_b49a88cb.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>runset-5826-reco-v07_08_00_04-hv-180kV-beam-0.5GeV-v0</inputdef> <!-- 1268 files -->
-      <fcl>piAbsSelector_redo_beamevent.fcl</fcl>
+      <inputdef>runset-5826-reco-unified-hv-180kV-beam-0.5GeV-v0</inputdef> <!-- 1000 files -->
+      <fcl>piAbsSelector_calohack_filter_unstable_HV_redo_beamevent.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
