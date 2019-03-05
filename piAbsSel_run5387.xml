@@ -8,17 +8,17 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_data_run5387_v3">
-<!ENTITY release "v07_12_00">
+<!ENTITY name "protoDUNE_data_run5387_v5_444ac9a5">
+<!ENTITY release "v08_08_08">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "33">
+<!ENTITY njobs "350">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>5</maxfilesperjob>
+  <maxfilesperjob>3</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -30,20 +30,20 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_806d4a86.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_444ac9a5.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>runset-5387-reco-v07_08_00_04-hv-180kV-beam-1GeV-v0</inputdef> <!-- 146 files -->
-      <fcl>piAbsSelector_redo_beamevent.fcl</fcl>
+      <inputdef>jhugon_np04_full-reconstructed_v07_08_00_unified_physics_run5387</inputdef> <!-- 944 files -->
+      <fcl>piAbsSelector_calohack_filter_unstable_HV_redo_beamevent.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
       <memory>1500</memory>
-      <jobsub>--expected-lifetime=3h</jobsub>
+      <jobsub>--expected-lifetime=3h</jobsub> <!-- real time is 3h, if more making up-->
   </stage>
 
   <!-- file type -->
