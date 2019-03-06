@@ -37,7 +37,7 @@
 
   <stage name="piAbsSelector">
       <inputdef>runset-5432-reco-unified-hv-180kV-beam-2GeV-v0</inputdef> <!-- 573 files -->
-      <fcl>piAbsSelector_redo_beamevent.fcl>
+      <fcl>piAbsSelector_redo_beamevent.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
