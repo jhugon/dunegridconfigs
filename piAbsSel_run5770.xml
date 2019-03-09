@@ -8,7 +8,7 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_data_run5770_v6_b49a88cb">
+<!ENTITY name "protoDUNE_data_run5770_v6p1_08b55104">
 <!ENTITY release "v08_11_00">
 <!ENTITY qual "e17:prof">
 <!ENTITY njobs "288">
@@ -37,7 +37,7 @@
 
   <stage name="piAbsSelector">
       <inputdef>runset-5770-reco-unified-hv-180kV-beam-6GeV-v0</inputdef> <!-- 1327 files -->
-      <fcl>piAbsSelector_redo_beamevent.fcl</fcl>
+      <fcl>piAbsSelector_calohack_filter_unstable_HV_redo_beamevent.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
