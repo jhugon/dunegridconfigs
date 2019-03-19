@@ -8,8 +8,8 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_mcc11_sce_1GeV_histats_limit5_v6p1_08b55104">
-<!ENTITY release "v08_11_00">
+<!ENTITY name "protoDUNE_mcc11_sce_1GeV_histats_limit5_v7a1_55712adf">
+<!ENTITY release "v08_13_01">
 <!ENTITY qual "e17:prof">
 <!ENTITY njobs "5">
 ]>
@@ -18,33 +18,34 @@
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>1</maxfilesperjob>
+  <maxfilesperjob>5</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
 
   <!-- Batch resources -->
-  <resource>DEDICATED,OPPORTUNISTIC</resource>
+  <resource>DEDICATED,OPPORTUNISTIC,OFFSITE</resource>
 
   <!-- Larsoft information -->
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_b49a88cb.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_55712adf.tar</local>
   </larsoft>
 
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>jhugon_mcc11_pd_sp_sce_1.0GeV_histats_limit5</inputdef> <!-- 188 files -->
+      <inputdef>jhugon_mcc11_pd_sp_sce_1.0GeV_histats_limit23</inputdef> <!-- 188 files -->
       <fcl>piAbsSelector_calohack.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
       <memory>2500</memory>
-      <jobsub>--expected-lifetime=8h</jobsub>
-      <prestagefraction>0.95</prestagefraction>
+      <jobsub>--expected-lifetime=3h</jobsub>
+      <prestagefraction>0.98</prestagefraction>
+      <schema>root</schema>
   </stage>
 
   <!-- file type -->
