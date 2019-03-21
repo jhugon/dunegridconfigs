@@ -8,7 +8,7 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_mcc11_sce_2GeV_limit5_v7a1_55712adf">
+<!ENTITY name "protoDUNE_mcc11_sce_2GeV_v7a1_55712adf">
 <!ENTITY release "v08_13_01">
 <!ENTITY qual "e17:prof">
 <!ENTITY njobs "10">

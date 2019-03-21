@@ -26,6 +26,7 @@
 
   <!-- Batch resources -->
   <resource>DEDICATED,OPPORTUNISTIC,OFFSITE</resource>
+  <site>BNL,Caltech,CERN,Colorado,FermiGrid,Florida,FNAL,FZU,London,Liverpool,Manchester,Michicgan,MIT,MWT2,Nebraska,NIKHEF,NotreDame,Omaha,PIC,RAL,SGrid,SGridECDF,SGridOxford,Sheffield,HOSTED_STANDFORD,SU-ITS,UChicago,UCSD</site> <!-- lefot off Wisconson on perpsose -->
 
   <!-- Larsoft information -->
   <larsoft>
