@@ -8,17 +8,17 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_mcc11_sce_1GeV_histats_limit5_v7a1_55712adf">
+<!ENTITY name "protoDUNE_mcc11_sce_1GeV_histats_v7a1_55712adf">
 <!ENTITY release "v08_13_01">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "5">
+<!ENTITY njobs "320">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>5</maxfilesperjob>
+  <maxfilesperjob>30</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -36,7 +36,8 @@
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <inputdef>jhugon_mcc11_pd_sp_sce_1.0GeV_histats_limit23</inputdef> <!-- 188 files -->
+      <inputdef>mcc11_pd_sp_sce_1.0GeV_histats</inputdef> <!-- 8644 files -->
+      <!-- <inputdef>jhugon_mcc11_pd_sp_sce_1.0GeV_histats_limit23</inputdef> --> <!-- 8644 files -->
       <fcl>piAbsSelector_calohack.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
@@ -44,7 +45,7 @@
       <datatier>reconstructed-2d</datatier>
       <memory>2500</memory>
       <jobsub>--expected-lifetime=3h</jobsub>
-      <prestagefraction>0.98</prestagefraction>
+      <prestagefraction>0.95</prestagefraction>
       <schema>root</schema>
   </stage>
 
