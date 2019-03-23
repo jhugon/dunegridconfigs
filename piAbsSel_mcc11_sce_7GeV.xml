@@ -8,18 +8,18 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!-- <!ENTITY name "protoDUNE_mcc11_sce_7GeV_v7a1_55712adf"> -->
-<!ENTITY name "protoDUNE_mcc11_sce_7GeV_limit10_v7a2_55712adf">
+<!ENTITY name "protoDUNE_mcc11_sce_7GeV_v7a1_55712adf">
+<!-- <!ENTITY name "protoDUNE_mcc11_sce_7GeV_limit10_v7a2_55712adf"> -->
 <!ENTITY release "v08_13_01">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "10">
+<!ENTITY njobs "369">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>1</maxfilesperjob>
+  <maxfilesperjob>4</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -37,8 +37,8 @@
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <!-- <inputdef>jhugon_mcc11_pd_sp_reco_sce_7.0GeV</inputdef> --> <!-- 1327 files -->
-      <inputdef>jhugon_mcc11_pd_sp_reco_sce_7.0GeV_limit10</inputdef>
+      <inputdef>jhugon_mcc11_pd_sp_reco_sce_7.0GeV</inputdef> <!-- 1327 files -->
+      <!-- <inputdef>jhugon_mcc11_pd_sp_reco_sce_7.0GeV_limit10</inputdef> -->
       <fcl>piAbsSelector_calohack.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>

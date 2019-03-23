@@ -17,7 +17,7 @@ sam = SAMWebClient()
 #
 #args = parser.parse_args()
 
-print "{0:70} {1:20} {2:6} {3:6} {4:6} {5:6} {6:6} {7:6}".format("Project","Stage","nJobs","nDirs","Code=0","ProcFin","nFiles","nConsumed")
+print "{0:70} {1:20} {2:6} {3:6} {4:6} {5:6} {6:6} {7:6} {8:6}".format("Project","Stage","nJobs","nDirs","Finish","Code=0","ProcFin","nFiles","nConsumed")
 process_counts_set = set()
 file_counts_set = set()
 for arg in sys.argv[1:]:
@@ -32,6 +32,7 @@ for arg in sys.argv[1:]:
       #print outdir
       nGoodDir = 0
       nGoodExitCode = 0
+      nFinished = 0
       try:
         jobdirContents = os.listdir(outdir)
       except OSError:
@@ -49,10 +50,16 @@ for arg in sys.argv[1:]:
             #print os.listdir(jobdirabs)
             #print jobdirab
             statusfn = os.path.join(jobdirabs,"lar.stat")
-            with open(statusfn) as statusfile:
+            try:
+              statusfile = open(statusfn)
               exitcode = int(statusfile.read())
+              statusfile.close()
+            except IOError:
+              pass
+            else:
+              nFinished += 1
               if exitcode == 0:
-                  nGoodExitCode += 1
+                nGoodExitCode += 1
       samprojnamesfn = os.path.join(outdir,"sam_projects.list")
       nProcFinished = 0
       nFilesTotal = 0
@@ -93,7 +100,7 @@ for arg in sys.argv[1:]:
                 process_counts_set.add(k)
   
      
-      print "{0:70} {1:20} {2:6} {3:6} {4:6} {5:6} {6:6} {7:6}".format(projname, stagename, njobs, nGoodDir, nGoodExitCode, nProcFinished,nFilesTotal, nFilesConsumed)
+      print "{0:70} {1:20} {2:6} {3:6} {4:6} {5:6} {6:6} {7:6} {8:6}".format(projname, stagename, njobs, nGoodDir, nFinished, nGoodExitCode, nProcFinished,nFilesTotal, nFilesConsumed)
         
 #print process_counts_set
 #print file_counts_set
