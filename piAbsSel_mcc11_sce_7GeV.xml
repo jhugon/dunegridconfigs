@@ -12,14 +12,14 @@
 <!ENTITY name "protoDUNE_mcc11_sce_7GeV_limit10_v7a2_55712adf">
 <!ENTITY release "v08_13_01">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "1">
+<!ENTITY njobs "10">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>30</maxfilesperjob>
+  <maxfilesperjob>1</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
