@@ -48,7 +48,7 @@
       <datatier>reconstructed-2d</datatier>
       <memory>1500</memory>
       <jobsub>--expected-lifetime=3h</jobsub>
-      <prestagefraction>0.98</prestagefraction>
+      <prestagefraction>0.95</prestagefraction>
       <schema>root</schema>
   </stage>
 
