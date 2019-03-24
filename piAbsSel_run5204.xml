@@ -8,25 +8,25 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!-- <!ENTITY name "protoDUNE_data_run5204_v6p1_08b55104"> -->
-<!ENTITY name "protoDUNE_data_run5204_limit23_v7a2_faaca6ad">
+<!ENTITY name "protoDUNE_data_run5204_v7a2_faaca6ad">
+<!-- <!ENTITY name "protoDUNE_data_run5204_limit23_v7a2_faaca6ad"> -->
 <!ENTITY release "v08_13_01">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "46">
+<!ENTITY njobs "109">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>2</maxfilesperjob>
+  <maxfilesperjob>5</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
 
   <!-- Batch resources -->
   <resource>DEDICATED,OPPORTUNISTIC,OFFSITE</resource>
-  <site>BNL,Caltech,CERN,Colorado,FermiGrid,Florida,FNAL,FZU,London,Liverpool,Manchester,Michicgan,MIT,MWT2,Nebraska,NIKHEF,NotreDame,Omaha,PIC,RAL,SGrid,SGridECDF,SGridOxford,Sheffield,HOSTED_STANDFORD,SU-ITS,UChicago,UCSD</site> <!-- lefot off Wisconson on perpsose -->
+  <site>BNL,Caltech,CERN,Colorado,FermiGrid,Florida,FNAL,FZU,London,Liverpool,Manchester,Michicgan,MIT,MWT2,Nebraska,NIKHEF,NotreDame,Omaha,PIC,RAL,SGrid,SGridECDF,Sheffield,HOSTED_STANDFORD,SU-ITS,UChicago,UCSD</site> <!-- lefot off Wisconson & SGridOxford on perpsose -->
 
   <!-- Larsoft information -->
   <larsoft>
@@ -38,8 +38,8 @@
   <!-- Project stages -->
 
   <stage name="piAbsSelector">
-      <!-- <inputdef>runset-5204-reco-unified-hv-180kV-beam-7GeV-v0</inputdef> --><!-- 541 files -->
-      <inputdef>jhugon_runset-5204-reco-unified-hv-180kV-beam-7GeV-v0_snapshot200702_limit23</inputdef>
+      <inputdef>runset-5204-reco-unified-hv-180kV-beam-7GeV-v0</inputdef> <!-- 541 files -->
+      <!-- <inputdef>jhugon_runset-5204-reco-unified-hv-180kV-beam-7GeV-v0_snapshot200702_limit23</inputdef> -->
       <fcl>piAbsSelector_calohack_filter_unstable_HV_redo_beamevent.fcl</fcl>
       <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
