@@ -59,13 +59,26 @@ for xmlfilename in args.xmlfiles:
             match = re.match(r"\d+_(\d+)",jobdir)
             if isDir and match:
               outLogFn = os.path.join(jobdirabs,"larStage0.out")
-              with open(outLogFn) as outLogFile:
-                for line in outLogFile:
-                  if line[:10] == "TrigReport":
-                    match = re.match(r"^TrigReport Events total = (\d+) passed = (\d+) failed = \d+\s*$",line)
-                    if match:
-                      nRun += int(match.group(1))
-                      nPass += int(match.group(2))
+              statusfn = os.path.join(jobdirabs,"lar.stat")
+              try:
+                statusfile = open(statusfn)
+                exitcode = int(statusfile.read())
+              except IOError:
+                pass
+              else:
+                if exitcode == 0:
+                  try:
+                    with open(outLogFn) as outLogFile:
+                      for line in outLogFile:
+                        if line[:10] == "TrigReport":
+                          match = re.match(r"^TrigReport Events total = (\d+) passed = (\d+) failed = \d+\s*$",line)
+                          if match:
+                            nRun += int(match.group(1))
+                            nPass += int(match.group(2))
+                  except IOError:
+                    pass
+              finally:
+                statusfile.close()
       if args.runover or args.percent:
         print "{0:70} {1:20} {3:8} {4:8} {5:8}".format(projname, stagename, inputdef,nEventsDef,nRun,nPass)
         if args.percent:
