@@ -46,7 +46,7 @@
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
       <memory>2000</memory>
-      <jobsub>--expected-lifetime=3h</jobsub>
+      <jobsub>--expected-lifetime=8h</jobsub>
       <prestagefraction>0.95</prestagefraction>
       <schema>root</schema>
   </stage>
