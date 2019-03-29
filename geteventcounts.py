@@ -9,6 +9,37 @@ import argparse
 import glob
 
 from samweb_client import SAMWebClient
+
+class JobDirNotFoundError(Exception):
+  pass
+
+def setOfGoodJobDirs(outdir):
+  result = []
+  try:
+    jobdirContents = os.listdir(outdir)
+  except OSError:
+    raise JobDirNotFoundError(outdir)
+  else:
+    badList = []
+    badListFn = os.path.join(outdir,"bad.list")
+    try:
+      with open(badListFn) as badListFile:
+        for line in badListFile:
+          badList.append(line.strip(" \n\r\t"))
+    except IOError:
+      pass
+    #print "badList: ", badList
+    for jobdir in jobdirContents:
+      jobdirabs = os.path.join(outdir,jobdir)
+      isDir = os.path.isdir(jobdirabs)
+      if jobdir in badList:
+        #print jobdir, "is in bad.list, skipping"
+        continue
+      match = re.match(r"\d+_(\d+)",jobdir)
+      if isDir and match:
+        result.append(jobdirabs)
+  return result
+
 sam = SAMWebClient()
 #sam.verbose = True
 
@@ -47,38 +78,34 @@ for xmlfilename in args.xmlfiles:
       if args.runover or args.percent:
         outdir = stage.find("outdir").text
         try:
-          jobdirContents = os.listdir(outdir)
+          jobdirs = setOfGoodJobDirs(outdir)
         except OSError:
           print projname, stagename, " outdir doesn't exist"
         else:
           nRun = 0
           nPass = 0
-          for jobdir in jobdirContents:
-            jobdirabs = os.path.join(outdir,jobdir)
-            isDir = os.path.isdir(jobdirabs)
-            match = re.match(r"\d+_(\d+)",jobdir)
-            if isDir and match:
-              outLogFn = os.path.join(jobdirabs,"larStage0.out")
-              statusfn = os.path.join(jobdirabs,"lar.stat")
-              try:
-                statusfile = open(statusfn)
-                exitcode = int(statusfile.read())
-              except IOError:
-                pass
-              else:
-                if exitcode == 0:
-                  try:
-                    with open(outLogFn) as outLogFile:
-                      for line in outLogFile:
-                        if line[:10] == "TrigReport":
-                          match = re.match(r"^TrigReport Events total = (\d+) passed = (\d+) failed = \d+\s*$",line)
-                          if match:
-                            nRun += int(match.group(1))
-                            nPass += int(match.group(2))
-                  except IOError:
-                    pass
-              finally:
-                statusfile.close()
+          for jobdirabs in jobdirs:
+            outLogFn = os.path.join(jobdirabs,"larStage0.out")
+            statusfn = os.path.join(jobdirabs,"lar.stat")
+            try:
+              statusfile = open(statusfn)
+              exitcode = int(statusfile.read())
+            except IOError:
+              pass
+            else:
+              if exitcode == 0:
+                try:
+                  with open(outLogFn) as outLogFile:
+                    for line in outLogFile:
+                      if line[:10] == "TrigReport":
+                        match = re.match(r"^TrigReport Events total = (\d+) passed = (\d+) failed = \d+\s*$",line)
+                        if match:
+                          nRun += int(match.group(1))
+                          nPass += int(match.group(2))
+                except IOError:
+                  pass
+            finally:
+              statusfile.close()
       if args.runover or args.percent:
         print "{0:70} {1:20} {3:8} {4:8} {5:8}".format(projname, stagename, inputdef,nEventsDef,nRun,nPass)
         if args.percent:
