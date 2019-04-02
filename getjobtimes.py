@@ -127,10 +127,14 @@ for arg in sys.argv[1:]:
                 lastLine = line[:28]
           try:
             # remove timezone
-            firstLine = firstLine[:20] + firstLine[-4:]
-            lastLine = lastLine[:20] + lastLine[-4:]
-            startTime = datetime.strptime(firstLine,r"%a %b %d %X %Y")
-            endTime = datetime.strptime(lastLine,r"%a %b %d %X %Y")
+            if firstLine[9] == ' ':
+              firstLine = firstLine[:8]+'0'+firstLine[8:]
+            if lastLine[9] == ' ':
+              lastLine = lastLine[:8]+'0'+lastLine[8:]
+            firstLine = firstLine[:18]
+            lastLine = lastLine[:18]
+            startTime = datetime.strptime(firstLine,r"%a %b %d %X")
+            endTime = datetime.strptime(lastLine,r"%a %b %d %X")
             if VERBOSE:
               print firstLine, startTime
               print lastLine, endTime
