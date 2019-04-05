@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!-- First try running piAbsSelector on protoDUNE data on grid -->
+
+<!DOCTYPE project [
+<!ENTITY file_type "data">
+<!ENTITY run_type "physics">
+<!ENTITY tag "TestOfBatchJobs">
+<!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
+<!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
+<!ENTITY name "protoDUNE_data_run5809_v7a2_faaca6ad">
+<!ENTITY release "v08_13_01">
+<!ENTITY qual "e17:prof">
+<!ENTITY njobs "543">
+]>
+
+<project name="&name;">
+
+  <!-- Project size -->
+  <numevents>-1</numevents>
+  <maxfilesperjob>2</maxfilesperjob>
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC,OFFSITE</resource>
+  <site>BNL,Caltech,CERN,Colorado,FermiGrid,Florida,FNAL,FZU,London,Liverpool,Manchester,Michicgan,MIT,MWT2,Nebraska,NIKHEF,NotreDame,Omaha,PIC,RAL,SGrid,SGridECDF,Sheffield,HOSTED_STANDFORD,SU-ITS,UChicago,UCSD</site> <!-- lefot off Wisconson & SGridOxford on perpsose -->
+
+  <!-- Larsoft information -->
+  <larsoft>
+      <tag>&release;</tag>
+      <qual>&qual;</qual>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_faaca6ad.tar</local>
+  </larsoft>
+
+  <!-- Project stages -->
+
+  <stage name="piAbsSelector">
+      <inputdef>runset-5809-reco-unified-hv-180kV-beam-1GeV-v0</inputdef> <!-- 1085 files -->
+      <fcl>piAbsSelector_calohack_filter_unstable_HV_redo_beamevent.fcl</fcl>
+      <outdir>&myoutdir;/&release;/piAbsSelector/&name;</outdir>
+      <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
+      <numjobs>&njobs;</numjobs>
+      <datatier>reconstructed-2d</datatier>
+      <memory>2000</memory>
+      <jobsub>--expected-lifetime=3h</jobsub>
+      <prestagefraction>0.95</prestagefraction>
+      <schema>root</schema>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type -->
+  <runtype>&run_type;</runtype>
+
+</project>
+
