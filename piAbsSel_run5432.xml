@@ -8,9 +8,9 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_data_run5432_v7a2_faaca6ad">
+<!ENTITY name "protoDUNE_data_run5432_v8.1_da81b52a">
 <!-- <!ENTITY name "protoDUNE_data_run5432_limit10_v7a2_faaca6ad"> -->
-<!ENTITY release "v08_13_01">
+<!ENTITY release "v08_15_01">
 <!ENTITY qual "e17:prof">
 <!ENTITY njobs "287">
 ]>
@@ -32,7 +32,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_faaca6ad.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_da81b52a.tar</local>
   </larsoft>
 
   <!-- Project stages -->

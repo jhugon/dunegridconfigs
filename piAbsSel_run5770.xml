@@ -8,18 +8,18 @@
 <!ENTITY tag "TestOfBatchJobs">
 <!ENTITY myoutdir "/pnfs/dune/scratch/users/jhugon">
 <!ENTITY myworkdir "/pnfs/dune/scratch/users/jhugon/gridworkdir">
-<!ENTITY name "protoDUNE_data_run5770_v7a2_faaca6ad">
+<!ENTITY name "protoDUNE_data_run5770_v8.1_da81b52a">
 <!-- <!ENTITY name "protoDUNE_data_run5770_limit20_v7a2_faaca6ad"> -->
-<!ENTITY release "v08_13_01">
+<!ENTITY release "v08_15_01">
 <!ENTITY qual "e17:prof">
-<!ENTITY njobs "266">
+<!ENTITY njobs "664">
 ]>
 
 <project name="&name;">
 
   <!-- Project size -->
   <numevents>-1</numevents>
-  <maxfilesperjob>5</maxfilesperjob>
+  <maxfilesperjob>2</maxfilesperjob>
 
   <!-- Operating System -->
   <os>SL6</os>
@@ -32,7 +32,7 @@
   <larsoft>
       <tag>&release;</tag>
       <qual>&qual;</qual>
-      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_faaca6ad.tar</local>
+      <local>/pnfs/dune/resilient/users/jhugon/tarballs/dunetpc_da81b52a.tar</local>
   </larsoft>
 
   <!-- Project stages -->
@@ -45,8 +45,8 @@
       <workdir>&myworkdir;/&release;/piAbsSelector/&name;</workdir>
       <numjobs>&njobs;</numjobs>
       <datatier>reconstructed-2d</datatier>
-      <memory>2000</memory>
-      <jobsub>--expected-lifetime=8h</jobsub>
+      <memory>1500</memory>
+      <jobsub>--expected-lifetime=3h</jobsub>
       <prestagefraction>0.95</prestagefraction>
       <schema>root</schema>
   </stage>
